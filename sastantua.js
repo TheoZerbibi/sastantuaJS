@@ -1,14 +1,14 @@
 /* if size = 1
 /*    /*\
 /*   /***\
-/*  /*****\
+/*  /**|**\
 */
 const readline = require('readline-sync');
 const size = readline.question("Enter a Size : ");
 
 main(Number(size));
 
-function make_line(space, star) {
+function	make_line(space, star) {
 	let i;
 	let str;
 
@@ -22,19 +22,43 @@ function make_line(space, star) {
 		str += '*';
 	str += '\\';
 	console.log(str);
-
 }
 
-function make_sastantua(total, size) {
-	let floor;
-	let line;
-	let length;
-	let shift;
-	let space;
+function	make_door(space, length, doorSIZE)
+{
+	let i;
+	let y;
+	let str = '';
 
-	floor = 0;
-	length = -1;
-	shift = 2;
+	i = 0;
+	y = doorSIZE;
+	while (i++ < space)
+		str += ' ';
+	i = 0;
+	str += '/';
+	while (i++ < length)
+		str += '*';
+	i = 0;
+	while (y--)
+	{
+		if (y == 1 && doorSIZE / 2 == space && doorSIZE > 3)
+			str += '$';
+		else
+			str += '|';
+	}
+	while (i++ < length)
+		str += '*';
+	str += '\\';
+	console.log(str);
+}
+
+function	make_sastantua(total, size,doorSTART)
+{
+	let floor = 0;
+	let length = -1;
+	let shift = 2;
+	let space, line;
+
 	while (floor++ < size)
 	{
 		line = 1;
@@ -42,40 +66,40 @@ function make_sastantua(total, size) {
 		{
 			length += 1;
 			space = ((total / 2) - length - 1);
-			make_line(space, (length * 2) + 1);
-			// console.log('space' + space);
-			// console.log('star' + ((length * 2) + 1));
+			if (floor == size && line > (size + 3) - doorSTART)
+				make_door(space, length - (doorSTART / 2), doorSTART);
+			else
+				make_line(space, (length * 2) + 1);
 		}
 		if (floor % 2 && floor > 1)
 			shift++;
 		length += shift;
-		// console.log('length make' + length);
 	}
 }
 
-function sastantua(size) {
+function	sastantua(size)
+{
 	let floor = 0;
 	let length = -1;
 	let shift = 2;
-	let line;
-	while (floor++ < size) {
+	let line, door;
+
+	while (floor++ < size)
+	{
 		line = 1;
-		// console.log('line '+line++);
-		// console.log('floor '+(floor+2));
-		// console.log('length '+length);
-		while (line++ <= (floor +2))
+		while (line++ <= (floor + 2))
 			length += 1;
 		if (floor % 2 && floor > 1)
 			shift++;
-		// console.log('length2 '+length);
 		length += shift;
-		// console.log('length3 '+length);
 	}
-	// console.log('total '+(((length - shift) * 2) + 3));
-	make_sastantua(((length - shift) * 2) + 3, size);
+	door = size - 1;
+	if (size % 2)
+		door++;
+	make_sastantua(((length - shift) * 2) + 3, size, door);
 }
 
-function main(size) {
+function	main(size) {
 	console.log(`Size : ${size} \n`);
 	if (size <= 0) {
 		return (0);
