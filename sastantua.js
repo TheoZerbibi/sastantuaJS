@@ -25,8 +25,7 @@ function	make_line(space, star) {
 	console.log(str);
 }
 
-function	make_door(space, length, doorSIZE)
-{
+function	make_door(space, length, doorSIZE) {
 	let i;
 	let y;
 	let str = '';
@@ -53,8 +52,7 @@ function	make_door(space, length, doorSIZE)
 	console.log(str);
 }
 
-function	make_sastantua(total, size,doorSTART)
-{
+function	make_sastantua(total, size,doorSTART) {
 	let floor = 0;
 	let length = -1;
 	let shift = 2;
@@ -78,8 +76,7 @@ function	make_sastantua(total, size,doorSTART)
 	}
 }
 
-function	sastantua(size)
-{
+function	sastantua(size) {
 	let floor = 0;
 	let length = -1;
 	let shift = 2;
