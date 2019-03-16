@@ -3,6 +3,7 @@
 /*   /***\
 /*  /**|**\
 */
+
 const readline = require('readline-sync');
 const size = readline.question("Enter a Size : ");
 
