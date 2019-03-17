@@ -39,8 +39,7 @@ function	make_door(space, length, doorSIZE) {
 	while (i++ < length)
 		str += '*';
 	i = 0;
-	while (y--)
-	{
+	while (y--) {
 		if (y == 1 && doorSIZE / 2 == space && doorSIZE > 3)
 			str += '$';
 		else
@@ -58,11 +57,9 @@ function	make_sastantua(total, size,doorSTART) {
 	let shift = 2;
 	let space, line;
 
-	while (floor++ < size)
-	{
+	while (floor++ < size) {
 		line = 1;
-		while (line++ <= (floor + 2))
-		{
+		while (line++ <= (floor + 2)) {
 			length += 1;
 			space = ((total / 2) - length - 1);
 			if (floor == size && line > (size + 3) - doorSTART)
@@ -82,8 +79,7 @@ function	sastantua(size) {
 	let shift = 2;
 	let line, door;
 
-	while (floor++ < size)
-	{
+	while (floor++ < size) {
 		line = 1;
 		while (line++ <= (floor + 2))
 			length += 1;
